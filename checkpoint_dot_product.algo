@@ -1,33 +1,49 @@
+ PROCEDURE dot_product(v1,v2 : ARRAY_OF FLOAT)
+    VAR
+        ps:FLOAT := 0;
+    BEGIN
+        FOR i:=0 FROM 1 TO v1.length-1  DO
+            ps := ps + v1[i] * v2[i]
+        END_FOR
+    END
 ALGORITHM Vecteurs_Orthogonaux
 VAR
-    v1 : ARRAY_OF type[n];
-    v2 : ARRAY_OF type[n];
-    ps:FLOAT := 0;
+    v1 : ARRAY_OF FLOAT;
+    v2 : ARRAY_OF FLOAT;
+    ps:FLOAT;
+    
 BEGIN
+  
+    dot_product(v1,v2);
+   IF (ps = 0) THEN
+       WRITE("Les vecteurs sont orthogonaux.")
+     ELSE
+         WRITE("Les vecteurs ne sont pas orthogonaux.")
+    END_IF
+END
+
+FUNCTION dot_product(v1,v2 : ARRAY_OF INTEGER[10]) : FLOAT
+    VAR
+       ps:FLOAT := 0; 
+    BEGIN
+           FOR i:=0 FROM 1 TO v1.length-1  DO
+            ps := ps + v1[i] * v2[i]
+           END_FOR    
+        RETURN ps ;
+    END
+
+ALGORITHM Vecteurs_Orthogonaux
+VAR
+    v1 : ARRAY_OF FLOAT;
+    v2 : ARRAY_OF FLOAT;
+    ps:FLOAT;
+    
+BEGIN
+  
    ps := dot_product(v1,v2);
    IF (ps = 0) THEN
        WRITE("Les vecteurs sont orthogonaux.")
      ELSE
          WRITE("Les vecteurs ne sont pas orthogonaux.")
     END_IF
-// **********************
-    PROCEDURE dot_product(v1,v2)
-    VAR
-        ps:FLOAT := 0;
-    BEGIN
-        FOR i:=0 FROM 1 TO n  DO
-            ps := ps + v1[i] * v2[i]
-        END_FOR
-    END
-
- // ******************************* 
-    FUNCTION dot_product(v1 : ARRAY_OF type[n];  v2 : ARRAY_OF type[n];) : FLOAT
-    VAR
-       ps:FLOAT := 0; 
-    BEGIN
-           FOR i:=0 FROM 1 TO n  DO
-            ps := ps + v1[i] * v2[i]
-           END_FOR    
-        RETURN ps ;
-    END
 END
